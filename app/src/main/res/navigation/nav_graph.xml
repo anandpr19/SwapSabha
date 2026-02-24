@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_home">
+
+    <!-- Home (placeholder fragment for Phase 2) -->
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.skillswap.app.ui.home.HomeFragment"
+        android:label="@string/nav_home"
+        tools:layout="@layout/fragment_home" />
+
+    <!-- Discover (placeholder fragment for Phase 2) -->
+    <fragment
+        android:id="@+id/nav_discover"
+        android:name="com.skillswap.app.ui.discover.DiscoverFragment"
+        android:label="@string/nav_discover"
+        tools:layout="@layout/fragment_discover" />
+
+    <!-- Swaps (placeholder fragment for Phase 3) -->
+    <fragment
+        android:id="@+id/nav_swaps"
+        android:name="com.skillswap.app.ui.swaps.SwapsFragment"
+        android:label="@string/nav_swaps"
+        tools:layout="@layout/fragment_swaps" />
+
+    <!-- Profile -->
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.skillswap.app.ui.profile.ProfileFragment"
+        android:label="@string/nav_profile"
+        tools:layout="@layout/fragment_profile" />
+
+</navigation>
