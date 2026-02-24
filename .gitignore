@@ -1,3 +1,14 @@
+# ─── Secrets & API Keys ──────────────────────────────
+google-services.json
+*.keystore
+*.jks
+signing.properties
+
+# ─── Build Outputs ───────────────────────────────────
+*.apk
+*.aab
+
+# ─── Gradle / IDE ────────────────────────────────────
 *.iml
 .gradle
 /local.properties
