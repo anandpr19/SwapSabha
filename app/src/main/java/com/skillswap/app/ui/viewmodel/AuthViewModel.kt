@@ -83,6 +83,7 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
                                             _authState.value = AuthState.Authenticated(user.uid)
                                         }
                             } else {
+                                prefsManager.saveSession(user.uid, "", email)
                                 _authState.value = AuthState.ProfileIncomplete(user.uid)
                             }
                         }
