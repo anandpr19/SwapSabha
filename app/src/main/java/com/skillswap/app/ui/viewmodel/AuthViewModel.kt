@@ -127,7 +127,11 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
                                         name = name.trim(),
                                         joinDate = System.currentTimeMillis()
                                 )
-                        userRepository.createUserProfile(user)
+                        val profileResult = userRepository.createUserProfile(user)
+                        profileResult.onFailure {
+                            // Retry once on failure
+                            userRepository.createUserProfile(user)
+                        }
 
                         // Send email verification
                         authRepository.sendEmailVerification()

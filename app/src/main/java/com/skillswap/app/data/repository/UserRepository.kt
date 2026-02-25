@@ -2,6 +2,7 @@ package com.skillswap.app.data.repository
 
 import android.net.Uri
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.storage.FirebaseStorage
 import com.skillswap.app.data.model.User
 import com.skillswap.app.utils.Constants
@@ -50,7 +51,8 @@ class UserRepository {
      */
     suspend fun updateUserProfile(userId: String, updates: Map<String, Any>): Result<Unit> {
         return try {
-            usersCollection.document(userId).update(updates).await()
+            // Use set-with-merge so the document is created if it doesn't exist yet
+            usersCollection.document(userId).set(updates, SetOptions.merge()).await()
             Result.success(Unit)
         } catch (e: Exception) {
             Result.failure(Exception("Failed to update profile: ${e.message}"))
