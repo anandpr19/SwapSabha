@@ -39,6 +39,14 @@
         <activity android:name=".ui.profile.EditProfileActivity"
             android:exported="false" />
 
+        <!-- Phase 2: Skill Activities -->
+        <activity android:name=".ui.skills.AddSkillActivity"
+            android:exported="false" />
+        <activity android:name=".ui.skills.EditSkillActivity"
+            android:exported="false" />
+        <activity android:name=".ui.discover.StudentProfileActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

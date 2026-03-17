@@ -1,0 +1,63 @@
+﻿
+> Configure project :app
+./gradlew : e: file:///D:/STUDY%20MATERIAL/DATA
+%20FILES/PROJECTS/Android/SwapSabha_Proj/app/bu
+ild.gradle.kts:3:24: Unresolved reference 
+'jetbrains'.
+At line:1 char:1
++ ./gradlew assembleDebug --console=plain > 
+build_error.log 2>&1 ; Get- ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (e 
+   : file:///D:/S...ce 'jetbrains'.:String) [  
+  ], RemoteException
+    + FullyQualifiedErrorId : NativeCommandErr 
+   or
+ 
+e: file:///D:/STUDY%20MATERIAL/DATA%20FILES/PRO
+JECTS/Android/SwapSabha_Proj/app/build.gradle.k
+ts:3:34: Cannot infer type for type parameter 
+'T'. Specify it explicitly.
+e: file:///D:/STUDY%20MATERIAL/DATA%20FILES/PRO
+JECTS/Android/SwapSabha_Proj/app/build.gradle.k
+ts:3:41: Unresolved reference 'android'.
+
+FAILURE: Build failed with an exception.
+
+* Where:
+Build file 'D:\STUDY MATERIAL\DATA FILES\PROJEC
+TS\Android\SwapSabha_Proj\app\build.gradle.kts'
+ line: 3
+
+* What went wrong:
+Script compilation errors:
+
+  Line 3:     
+alias(libs.plugins.jetbrains.kotlin.android)
+                                 ^ Unresolved 
+reference 'jetbrains'.
+
+  Line 3:     
+alias(libs.plugins.jetbrains.kotlin.android)
+                                           ^ 
+Cannot infer type for type parameter 'T'. 
+Specify it explicitly.
+
+  Line 3:     
+alias(libs.plugins.jetbrains.kotlin.android)
+                                               
+   ^ Unresolved reference 'android'.
+
+3 errors
+
+* Try:
+> Run with --stacktrace option to get the 
+stack trace.
+> Run with --info or --debug option to get 
+more log output.
+> Run with --scan to generate a Build Scan 
+(powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 3s

@@ -146,6 +146,55 @@
             android:textColor="?attr/colorOnSurfaceVariant"
             android:layout_marginTop="@dimen/spacing_lg" />
 
+        <!-- My Skills section header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/spacing_lg"
+            android:layout_marginBottom="@dimen/spacing_sm">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/label_my_skills"
+                android:textSize="@dimen/text_lg"
+                android:textStyle="bold"
+                android:textColor="?attr/colorOnSurface" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAddSkill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_add_skill"
+                android:textSize="@dimen/text_sm"
+                style="@style/Widget.Material3.Button.TonalButton"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                app:cornerRadius="@dimen/button_corner_radius" />
+
+        </LinearLayout>
+
+        <!-- Empty skills hint -->
+        <TextView
+            android:id="@+id/tvNoSkills"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/msg_no_skills_yet"
+            android:gravity="center"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:textSize="@dimen/text_sm"
+            android:visibility="gone" />
+
+        <!-- Skills RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMySkills"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            android:layout_marginBottom="@dimen/spacing_md" />
+
         <!-- Edit Profile Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnEditProfile"
