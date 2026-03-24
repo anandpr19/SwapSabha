@@ -1,5 +1,7 @@
 package com.skillswap.app.data.model
 
+import com.google.firebase.firestore.PropertyName
+
 /**
  * Represents a user profile in the SwapSabha system. Maps directly to a document in the Firestore
  * `users` collection.
@@ -16,7 +18,8 @@ data class User(
         val totalSwaps: Int = 0,
         val totalHours: Double = 0.0,
         val badges: List<String> = emptyList(),
-        val isActive: Boolean = true,
+        @get:PropertyName("isActive") @set:PropertyName("isActive")
+        var isActive: Boolean = true,
         val lastActiveAt: Long = System.currentTimeMillis(),
         val stats: UserStats = UserStats()
 ) {

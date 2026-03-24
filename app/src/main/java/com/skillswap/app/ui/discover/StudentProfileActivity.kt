@@ -1,5 +1,6 @@
 package com.skillswap.app.ui.discover
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +12,7 @@ import com.skillswap.app.R
 import com.skillswap.app.data.model.Skill
 import com.skillswap.app.databinding.ActivityStudentProfileBinding
 import com.skillswap.app.ui.skills.SkillAdapter
+import com.skillswap.app.ui.swaps.SwapRequestActivity
 import com.skillswap.app.ui.viewmodel.ProfileViewModel
 import com.skillswap.app.ui.viewmodel.ProfileState
 import com.skillswap.app.ui.viewmodel.SkillViewModel
@@ -32,6 +34,9 @@ class StudentProfileActivity : AppCompatActivity() {
     private lateinit var skillViewModel: SkillViewModel
     private lateinit var skillAdapter: SkillAdapter
     private var targetUserId: String = ""
+    private var targetUserName: String = ""
+    private var targetUserPic: String = ""
+    private var loadedSkills: List<Skill> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,9 +56,21 @@ class StudentProfileActivity : AppCompatActivity() {
         profileViewModel.loadProfile(targetUserId)
         loadTargetUserSkills()
 
-        // Request Swap button — wired up in Phase 3
+        // Request Swap button — launches SwapRequestActivity
         binding.btnRequestSwap.setOnClickListener {
-            showToast(getString(R.string.msg_swap_coming_soon))
+            if (loadedSkills.isEmpty()) {
+                showToast("This user has no skills to swap")
+                return@setOnClickListener
+            }
+            val firstSkill = loadedSkills.first()
+            val intent = Intent(this, SwapRequestActivity::class.java).apply {
+                putExtra(SwapRequestActivity.EXTRA_TEACHER_ID, targetUserId)
+                putExtra(SwapRequestActivity.EXTRA_TEACHER_NAME, targetUserName)
+                putExtra(SwapRequestActivity.EXTRA_TEACHER_PIC, targetUserPic)
+                putExtra(SwapRequestActivity.EXTRA_SKILL_ID, firstSkill.skillId)
+                putExtra(SwapRequestActivity.EXTRA_SKILL_NAME, firstSkill.name)
+            }
+            startActivity(intent)
         }
     }
 
@@ -78,6 +95,7 @@ class StudentProfileActivity : AppCompatActivity() {
             val result = repo.getMySkills(targetUserId)
             result.onSuccess { skills ->
                 runOnUiThread {
+                    loadedSkills = skills
                     if (skills.isEmpty()) {
                         binding.tvNoSkills.show()
                         binding.rvStudentSkills.hide()
@@ -95,6 +113,8 @@ class StudentProfileActivity : AppCompatActivity() {
         profileViewModel.userProfile.observe(this) { user ->
             user ?: return@observe
             supportActionBar?.title = user.name
+            targetUserName = user.name
+            targetUserPic = user.profilePictureUrl
 
             binding.tvName.text = user.name
             binding.tvCampus.text = user.campus.ifBlank { "Campus not set" }

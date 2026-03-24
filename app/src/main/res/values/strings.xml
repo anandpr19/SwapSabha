@@ -105,4 +105,39 @@
     <string name="btn_request_swap">Request a Swap</string>
     <string name="msg_swap_coming_soon">Swap requests coming in Phase 3!</string>
 
+    <!-- Phase 3: Swaps -->
+    <string name="title_request_swap">Request a Swap</string>
+    <string name="title_swap_detail">Swap Details</string>
+    <string name="title_reject_swap">Reject Request</string>
+    <string name="title_complete_swap">Complete Swap</string>
+    <string name="title_cancel_swap">Cancel Swap</string>
+
+    <string name="label_skill">Skill</string>
+    <string name="label_requester">Requester</string>
+    <string name="label_teacher">Teacher</string>
+    <string name="label_date_time">Date &amp; Time</string>
+    <string name="label_duration">Duration</string>
+    <string name="label_location">Location</string>
+    <string name="label_message">Message</string>
+
+    <string name="hint_proposed_date">Proposed Date &amp; Time</string>
+    <string name="hint_location">Location (e.g. Library, Room 204)</string>
+    <string name="hint_message">Add a message (optional)</string>
+
+    <string name="btn_send_request">Send Request</string>
+    <string name="btn_accept">Accept</string>
+    <string name="btn_reject">Reject</string>
+    <string name="btn_complete">Mark as Complete</string>
+    <string name="btn_cancel_swap">Cancel Swap</string>
+
+    <string name="msg_request_sent">Swap request sent!</string>
+    <string name="msg_swap_accepted">Swap accepted!</string>
+    <string name="msg_swap_rejected">Swap rejected.</string>
+    <string name="msg_swap_completed">Swap marked as complete!</string>
+    <string name="msg_swap_cancelled">Swap cancelled.</string>
+    <string name="msg_reject_confirm">Are you sure you want to reject this swap request?</string>
+    <string name="msg_complete_confirm">Mark this swap as complete?</string>
+    <string name="msg_cancel_confirm">Are you sure you want to cancel this swap?</string>
+    <string name="msg_no_swaps">No swaps yet.</string>
+
 </resources>

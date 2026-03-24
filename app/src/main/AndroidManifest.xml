@@ -47,6 +47,12 @@
         <activity android:name=".ui.discover.StudentProfileActivity"
             android:exported="false" />
 
+        <!-- Phase 3: Swap Activities -->
+        <activity android:name=".ui.swaps.SwapRequestActivity"
+            android:exported="false" />
+        <activity android:name=".ui.swaps.SwapDetailActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
