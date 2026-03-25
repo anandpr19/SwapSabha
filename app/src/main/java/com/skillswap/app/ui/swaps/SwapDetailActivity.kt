@@ -8,8 +8,10 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.skillswap.app.R
 import com.skillswap.app.data.model.Swap
 import com.skillswap.app.databinding.ActivitySwapDetailBinding
+import com.skillswap.app.ui.rating.RatingBottomSheet
 import com.skillswap.app.ui.viewmodel.SwapState
 import com.skillswap.app.ui.viewmodel.SwapViewModel
+import com.skillswap.app.utils.RatingRole
 import com.skillswap.app.utils.hide
 import com.skillswap.app.utils.show
 import com.skillswap.app.utils.showToast
@@ -148,8 +150,7 @@ class SwapDetailActivity : AppCompatActivity() {
                 }
                 is SwapState.Completed -> {
                     showToast(getString(R.string.msg_swap_completed))
-                    setResult(RESULT_OK)
-                    finish()
+                    showRatingSheet()
                 }
                 is SwapState.Cancelled -> {
                     showToast(getString(R.string.msg_swap_cancelled))
@@ -162,8 +163,32 @@ class SwapDetailActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Shows the rating bottom sheet after a swap is completed.
+     * Determines who to rate based on the current user's role.
+     */
+    private fun showRatingSheet() {
+        val userId = viewModel.getCurrentUserId() ?: run {
+            setResult(RESULT_OK); finish(); return
+        }
+
+        // Determine who the current user should rate
+        val isRequester = swap.requesterId == userId
+        val ratedUserId = if (isRequester) swap.teacherId else swap.requesterId
+        val ratedUserName = if (isRequester) swap.teacherName else swap.requesterName
+        val role = if (isRequester) RatingRole.TEACHER else RatingRole.LEARNER
+
+        val sheet = RatingBottomSheet.newInstance(swap.swapId, ratedUserId, ratedUserName, role)
+        sheet.setOnRatingSubmittedListener {
+            setResult(RESULT_OK)
+            finish()
+        }
+        sheet.show(supportFragmentManager, "rating")
+    }
+
     override fun onSupportNavigateUp(): Boolean {
         onBackPressedDispatcher.onBackPressed()
         return true
     }
 }
+

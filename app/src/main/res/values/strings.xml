@@ -140,4 +140,18 @@
     <string name="msg_cancel_confirm">Are you sure you want to cancel this swap?</string>
     <string name="msg_no_swaps">No swaps yet.</string>
 
+    <!-- Phase 4: Ratings & Home -->
+    <string name="title_rate_swap">Rate Your Experience</string>
+    <string name="label_tags">What went well?</string>
+    <string name="hint_comment">Add a comment (optional)</string>
+    <string name="btn_submit_rating">Submit Rating</string>
+    <string name="msg_rating_submitted">Thanks for your rating!</string>
+
+    <string name="label_recent_swaps">Recent Swaps</string>
+    <string name="label_leaderboard">Top Rated</string>
+    <string name="label_badges">Badges</string>
+    <string name="label_avatar">Avatar</string>
+    <string name="msg_no_recent_swaps">No completed swaps yet. Start swapping!</string>
+    <string name="msg_no_leaderboard">Be the first on the leaderboard!</string>
+
 </resources>
