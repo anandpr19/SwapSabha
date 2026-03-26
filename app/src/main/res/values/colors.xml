@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Organic Bento Light Mode Palette (Derived from Stitch) -->
+    <color name="stitch_background">#F5F5F7</color>
+    <color name="stitch_surface_container">#FFFFFF</color>
+    <color name="stitch_surface_container_highest">#EEEEEE</color>
+    <color name="stitch_primary">#0058CC</color>
+    <color name="stitch_secondary">#496400</color>
+    <color name="stitch_on_surface">#1A1A1A</color>
+    <color name="stitch_on_surface_variant">#555555</color>
 </resources>

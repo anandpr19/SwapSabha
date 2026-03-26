@@ -4,23 +4,34 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="@dimen/spacing_lg">
+    android:padding="24dp"
+    android:background="@drawable/bottom_sheet_bento_bg">
+
+    <View
+        android:layout_width="48dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="24dp"
+        android:background="#484848" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/title_rate_swap"
-        android:textAppearance="?attr/textAppearanceHeadlineSmall"
+        android:fontFamily="sans-serif-black"
+        android:textSize="24sp"
+        android:textColor="@color/stitch_on_surface"
         android:gravity="center" />
 
     <TextView
         android:id="@+id/tvRateUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_xs"
+        android:layout_marginTop="8dp"
         android:text="How was your experience?"
-        android:textAppearance="?attr/textAppearanceBodyMedium"
-        android:textColor="?android:attr/textColorSecondary"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="16sp"
+        android:textColor="@color/stitch_on_surface_variant"
         android:gravity="center" />
 
     <!-- Star Rating -->
@@ -29,37 +40,53 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/spacing_md"
+        android:layout_marginTop="24dp"
         android:numStars="5"
         android:stepSize="1"
         android:rating="5"
-        style="?android:attr/ratingBarStyle" />
+        android:progressTint="@color/stitch_secondary"
+        android:progressBackgroundTint="@color/stitch_surface_container_highest"
+        style="?android:attr/ratingBarStyleIndicator"
+        android:isIndicator="false" />
 
     <!-- Positive Tags -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_lg"
+        android:layout_marginTop="32dp"
         android:text="@string/label_tags"
-        android:textAppearance="?attr/textAppearanceLabelLarge" />
+        android:fontFamily="sans-serif-bold"
+        android:textSize="18sp"
+        android:textColor="@color/stitch_on_surface" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chipGroupTags"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_sm"
+        android:layout_marginTop="16dp"
+        app:chipSpacingVertical="12dp"
+        app:chipSpacingHorizontal="12dp"
         app:singleSelection="false" />
 
-    <!-- Comment -->
+    <!-- Comment Bento Input -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilComment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_md"
+        android:layout_marginTop="32dp"
         android:hint="@string/hint_comment"
         app:counterEnabled="true"
         app:counterMaxLength="500"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+        app:counterTextColor="@color/stitch_on_surface_variant"
+        app:boxBackgroundColor="@color/stitch_surface_container"
+        app:boxCornerRadiusTopStart="24dp"
+        app:boxCornerRadiusTopEnd="24dp"
+        app:boxCornerRadiusBottomStart="24dp"
+        app:boxCornerRadiusBottomEnd="24dp"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:hintTextColor="@color/stitch_primary"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etComment"
@@ -67,24 +94,33 @@
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
             android:maxLength="500"
-            android:minLines="2" />
-
+            android:minLines="3"
+            android:textColor="@color/stitch_on_surface"
+            android:fontFamily="sans-serif" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Submit -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSubmitRating"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/button_height"
-        android:layout_marginTop="@dimen/spacing_lg"
-        android:text="@string/btn_submit_rating" />
+        android:layout_height="64dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/btn_submit_rating"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif-bold"
+        android:textColor="@color/stitch_on_surface"
+        app:backgroundTint="@color/stitch_primary"
+        app:cornerRadius="32dp"
+        style="@style/Widget.Material3.Button.UnelevatedButton" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/spacing_sm"
+        android:layout_marginTop="16dp"
+        android:indeterminateTint="@color/stitch_primary"
         android:visibility="gone" />
 
 </LinearLayout>

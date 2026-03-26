@@ -4,211 +4,274 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="?attr/colorSurface">
+    android:background="@color/stitch_background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/spacing_lg">
+        android:padding="24dp">
 
-        <!-- Greeting -->
-        <TextView
-            android:id="@+id/tvGreeting"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Welcome back!"
-            android:textAppearance="?attr/textAppearanceHeadlineMedium" />
-
-        <TextView
-            android:id="@+id/tvUserName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Student"
-            android:textAppearance="?attr/textAppearanceTitleLarge"
-            android:textColor="?attr/colorPrimary" />
-
-        <!-- Stats Cards Row -->
+        <!-- Greeting Bento -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_lg"
+            android:orientation="vertical"
+            android:layout_marginBottom="24dp">
+            <TextView
+                android:id="@+id/tvGreeting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Welcome back!"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="18sp"
+                android:textColor="@color/stitch_on_surface_variant" />
+
+            <TextView
+                android:id="@+id/tvUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Student"
+                android:fontFamily="sans-serif-black"
+                android:textSize="32sp"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/stitch_on_surface" />
+        </LinearLayout>
+
+        <!-- Stats Cards Row (Organic Bento layout) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:baselineAligned="false">
+            android:baselineAligned="false"
+            android:layout_marginBottom="24dp">
 
             <!-- Total Swaps -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_marginEnd="@dimen/spacing_xs"
-                app:cardCornerRadius="@dimen/card_corner_radius"
-                app:cardElevation="@dimen/elevation_sm">
+                android:layout_marginEnd="6dp"
+                app:cardBackgroundColor="@color/stitch_surface_container"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:padding="@dimen/spacing_md">
+                    android:paddingTop="32dp"
+                    android:paddingBottom="32dp"
+                    android:paddingHorizontal="16dp">
 
                     <TextView
                         android:id="@+id/tvSwapCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-                        android:textAppearance="?attr/textAppearanceHeadlineSmall"
-                        android:textColor="?attr/colorPrimary" />
+                        android:fontFamily="sans-serif-black"
+                        android:textSize="36sp"
+                        android:textColor="@color/stitch_primary" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/label_swaps"
-                        android:textAppearance="?attr/textAppearanceLabelSmall"
-                        android:textColor="?android:attr/textColorSecondary" />
-
+                        android:layout_marginTop="8dp"
+                        android:text="Completed Swaps"
+                        android:textAlignment="center"
+                        android:fontFamily="sans-serif-medium"
+                        android:textSize="13sp"
+                        android:textColor="@color/stitch_on_surface_variant" />
                 </LinearLayout>
-
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Rating -->
-            <com.google.android.material.card.MaterialCardView
+            <!-- Column for Rating and Reputation (Nested Bento) -->
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_marginHorizontal="@dimen/spacing_xs"
-                app:cardCornerRadius="@dimen/card_corner_radius"
-                app:cardElevation="@dimen/elevation_sm">
+                android:layout_marginStart="6dp"
+                android:orientation="vertical">
 
-                <LinearLayout
+                <!-- Rating -->
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="@dimen/spacing_md">
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginBottom="6dp"
+                    app:cardBackgroundColor="@color/stitch_surface_container"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="0dp">
 
-                    <TextView
-                        android:id="@+id/tvAvgRating"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="—"
-                        android:textAppearance="?attr/textAppearanceHeadlineSmall"
-                        android:textColor="?attr/colorPrimary" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="20dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_rating"
-                        android:textAppearance="?attr/textAppearanceLabelSmall"
-                        android:textColor="?android:attr/textColorSecondary" />
+                        <TextView
+                            android:id="@+id/tvAvgRating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="—"
+                            android:fontFamily="sans-serif-black"
+                            android:textSize="28sp"
+                            android:textColor="@color/stitch_secondary" />
 
-                </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:text="Avg Rating"
+                            android:fontFamily="sans-serif-medium"
+                            android:textSize="13sp"
+                            android:textColor="@color/stitch_on_surface_variant" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Reputation Tier -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="@dimen/spacing_xs"
-                app:cardCornerRadius="@dimen/card_corner_radius"
-                app:cardElevation="@dimen/elevation_sm">
-
-                <LinearLayout
+                <!-- Reputation Tier -->
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="@dimen/spacing_md">
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="6dp"
+                    app:cardBackgroundColor="@color/stitch_surface_container"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="0dp">
 
-                    <TextView
-                        android:id="@+id/tvRepTier"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="—"
-                        android:textAppearance="?attr/textAppearanceHeadlineSmall"
-                        android:textColor="?attr/colorPrimary" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="20dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_reputation"
-                        android:textAppearance="?attr/textAppearanceLabelSmall"
-                        android:textColor="?android:attr/textColorSecondary" />
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
+                        <TextView
+                            android:id="@+id/tvRepTier"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="—"
+                            android:fontFamily="sans-serif-black"
+                            android:textSize="24sp"
+                            android:textColor="@color/stitch_primary" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
         </LinearLayout>
 
-        <!-- Badges -->
+        <!-- Earned Badges -->
         <TextView
             android:id="@+id/tvBadgesLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_lg"
-            android:text="@string/label_badges"
-            android:textAppearance="?attr/textAppearanceTitleMedium"
+            android:layout_marginBottom="12dp"
+            android:text="Earned Badges"
+            android:fontFamily="sans-serif-bold"
+            android:textSize="20sp"
+            android:textColor="@color/stitch_on_surface"
             android:visibility="gone" />
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chipGroupBadges"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_sm"
+            android:layout_marginBottom="24dp"
             android:visibility="gone" />
 
-        <!-- Recent Swaps -->
-        <TextView
+        <!-- Recent Swaps Section -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_lg"
-            android:text="@string/label_recent_swaps"
-            android:textAppearance="?attr/textAppearanceTitleMedium" />
+            android:layout_marginBottom="24dp"
+            app:cardBackgroundColor="@color/stitch_surface_container"
+            app:cardCornerRadius="32dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvRecentSwaps"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_sm"
-            android:nestedScrollingEnabled="false" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
 
-        <TextView
-            android:id="@+id/tvNoRecentSwaps"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_sm"
-            android:text="@string/msg_no_recent_swaps"
-            android:textAppearance="?attr/textAppearanceBodyMedium"
-            android:textColor="?android:attr/textColorSecondary"
-            android:gravity="center" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Recent Swaps"
+                    android:fontFamily="sans-serif-bold"
+                    android:textSize="20sp"
+                    android:layout_marginBottom="16dp"
+                    android:textColor="@color/stitch_on_surface" />
 
-        <!-- Leaderboard -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_xl"
-            android:text="@string/label_leaderboard"
-            android:textAppearance="?attr/textAppearanceTitleMedium" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvRecentSwaps"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvLeaderboard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_sm"
-            android:nestedScrollingEnabled="false" />
+                <TextView
+                    android:id="@+id/tvNoRecentSwaps"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="No swaps yet. Start swopping!"
+                    android:fontFamily="sans-serif"
+                    android:textSize="14sp"
+                    android:textColor="@color/stitch_on_surface_variant"
+                    android:gravity="center" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-        <TextView
-            android:id="@+id/tvNoLeaderboard"
+        <!-- Leaderboard Section -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_sm"
-            android:text="@string/msg_no_leaderboard"
-            android:textAppearance="?attr/textAppearanceBodyMedium"
-            android:textColor="?android:attr/textColorSecondary"
-            android:gravity="center" />
+            android:layout_marginBottom="64dp"
+            app:cardBackgroundColor="@color/stitch_surface_container"
+            app:cardCornerRadius="32dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Top Rated Students"
+                    android:fontFamily="sans-serif-bold"
+                    android:textSize="20sp"
+                    android:layout_marginBottom="16dp"
+                    android:textColor="@color/stitch_on_surface" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvLeaderboard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false" />
+
+                <TextView
+                    android:id="@+id/tvNoLeaderboard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="Leaderboard is empty."
+                    android:fontFamily="sans-serif"
+                    android:textSize="14sp"
+                    android:textColor="@color/stitch_on_surface_variant"
+                    android:gravity="center" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 

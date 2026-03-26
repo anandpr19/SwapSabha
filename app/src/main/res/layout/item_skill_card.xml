@@ -3,58 +3,58 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="@dimen/spacing_md"
-    android:layout_marginBottom="@dimen/spacing_sm"
+    android:layout_marginHorizontal="24dp"
+    android:layout_marginBottom="24dp"
     android:clickable="true"
     android:focusable="true"
-    app:cardCornerRadius="@dimen/card_corner_radius"
-    app:cardElevation="3dp">
+    app:cardBackgroundColor="@color/stitch_surface_container"
+    app:cardCornerRadius="32dp"
+    app:cardElevation="0dp"
+    app:strokeWidth="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="@dimen/spacing_md">
+        android:orientation="vertical">
 
-        <!-- User Avatar -->
+        <!-- Image Placeholder (Can act as hero background for Tinder cards) -->
         <ImageView
             android:id="@+id/ivUserAvatar"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
             android:contentDescription="User avatar"
             android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:background="@color/stitch_surface_container_highest" />
 
-        <!-- Text info -->
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_sm"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="24dp">
 
             <TextView
                 android:id="@+id/tvSkillName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Skill Name"
-                android:textAppearance="?attr/textAppearanceTitleSmall" />
+                android:fontFamily="sans-serif-bold"
+                android:textSize="22sp"
+                android:textColor="@color/stitch_on_surface" />
 
             <TextView
                 android:id="@+id/tvUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="User Name"
-                android:textAppearance="?attr/textAppearanceBodySmall"
-                android:textColor="?android:attr/textColorSecondary" />
+                android:layout_marginTop="4dp"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="16sp"
+                android:textColor="@color/stitch_on_surface_variant" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_xs"
+                android:layout_marginTop="16dp"
                 android:orientation="horizontal">
 
                 <com.google.android.material.chip.Chip
@@ -62,26 +62,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Category"
-                    app:chipMinHeight="24dp"
-                    app:textStartPadding="6dp"
-                    app:textEndPadding="6dp"
-                    style="@style/Widget.Material3.Chip.Assist" />
+                    app:chipMinHeight="32dp"
+                    app:textStartPadding="12dp"
+                    app:textEndPadding="12dp"
+                    android:textColor="@color/stitch_secondary"
+                    app:chipBackgroundColor="@color/stitch_surface_container_highest"
+                    app:chipStrokeWidth="0dp" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/tvLevel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing_xs"
+                    android:layout_marginStart="8dp"
                     android:text="Level"
-                    app:chipMinHeight="24dp"
-                    app:textStartPadding="6dp"
-                    app:textEndPadding="6dp"
-                    style="@style/Widget.Material3.Chip.Assist" />
-
+                    app:chipMinHeight="32dp"
+                    app:textStartPadding="12dp"
+                    app:textEndPadding="12dp"
+                    android:textColor="@color/stitch_primary"
+                    app:chipBackgroundColor="@color/stitch_surface_container_highest"
+                    app:chipStrokeWidth="0dp" />
             </LinearLayout>
-
         </LinearLayout>
-
     </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

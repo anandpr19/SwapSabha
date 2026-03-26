@@ -3,116 +3,203 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="@color/stitch_background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/spacing_lg">
-
-        <!-- Skill info header -->
-        <TextView
-            android:id="@+id/tvSkillLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/label_skill"
-            android:textAppearance="?attr/textAppearanceLabelMedium"
-            android:textColor="?android:attr/textColorSecondary" />
+        android:padding="24dp">
 
         <TextView
-            android:id="@+id/tvSkillName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_xs"
-            android:text="Skill Name"
-            android:textAppearance="?attr/textAppearanceTitleLarge" />
+            android:text="Request Swap"
+            android:fontFamily="sans-serif-black"
+            android:textSize="28sp"
+            android:textColor="@color/stitch_on_surface"
+            android:layout_marginBottom="24dp" />
 
-        <TextView
-            android:id="@+id/tvTeacherName"
+        <!-- Skill info Bento -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_xs"
-            android:text="Teacher Name"
-            android:textAppearance="?attr/textAppearanceBodyMedium"
-            android:textColor="?android:attr/textColorSecondary" />
+            app:cardBackgroundColor="@color/stitch_surface_container"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp">
 
-        <!-- Proposed Date -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_lg"
-            android:hint="@string/hint_proposed_date"
-            app:startIconDrawable="@android:drawable/ic_menu_my_calendar"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etDate"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusable="false"
-                android:clickable="true"
-                android:cursorVisible="false" />
+                android:orientation="vertical"
+                android:padding="20dp">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <TextView
+                    android:id="@+id/tvSkillLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_skill"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="12sp"
+                    android:textColor="@color/stitch_primary" />
 
-        <!-- Duration -->
-        <TextView
+                <TextView
+                    android:id="@+id/tvSkillName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Skill Name"
+                    android:fontFamily="sans-serif-bold"
+                    android:textSize="20sp"
+                    android:textColor="@color/stitch_on_surface" />
+
+                <TextView
+                    android:id="@+id/tvTeacherName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Teacher Name"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="14sp"
+                    android:textColor="@color/stitch_on_surface_variant" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Configuration Bento -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_lg"
-            android:text="@string/label_duration"
-            android:textAppearance="?attr/textAppearanceLabelLarge" />
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/stitch_surface_container"
+            app:cardCornerRadius="32dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp">
 
-        <TextView
-            android:id="@+id/tvDurationValue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="60 min"
-            android:textAppearance="?attr/textAppearanceBodyLarge"
-            android:gravity="center" />
-
-        <com.google.android.material.slider.Slider
-            android:id="@+id/sliderDuration"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:valueFrom="30"
-            android:valueTo="240"
-            android:stepSize="15"
-            android:value="60" />
-
-        <!-- Location -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilLocation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_md"
-            android:hint="@string/hint_location"
-            app:startIconDrawable="@android:drawable/ic_menu_compass"
-            app:counterEnabled="true"
-            app:counterMaxLength="200"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etLocation"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:maxLength="200" />
+                android:orientation="vertical"
+                android:padding="24dp">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <!-- Proposed Date -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_proposed_date"
+                    app:startIconDrawable="@android:drawable/ic_menu_my_calendar"
+                    app:startIconTint="@color/stitch_on_surface_variant"
+                    app:boxBackgroundColor="@color/stitch_surface_container_highest"
+                    app:boxCornerRadiusTopStart="16dp"
+                    app:boxCornerRadiusTopEnd="16dp"
+                    app:boxCornerRadiusBottomStart="16dp"
+                    app:boxCornerRadiusBottomEnd="16dp"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    app:hintTextColor="@color/stitch_primary"
+                    style="@style/Widget.Material3.TextInputLayout.FilledBox">
 
-        <!-- Message -->
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:cursorVisible="false"
+                        android:textColor="@color/stitch_on_surface"
+                        android:fontFamily="sans-serif-medium" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Location -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/hint_location"
+                    app:startIconDrawable="@android:drawable/ic_menu_compass"
+                    app:startIconTint="@color/stitch_on_surface_variant"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="200"
+                    app:counterTextColor="@color/stitch_on_surface_variant"
+                    app:boxBackgroundColor="@color/stitch_surface_container_highest"
+                    app:boxCornerRadiusTopStart="16dp"
+                    app:boxCornerRadiusTopEnd="16dp"
+                    app:boxCornerRadiusBottomStart="16dp"
+                    app:boxCornerRadiusBottomEnd="16dp"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    app:hintTextColor="@color/stitch_primary"
+                    style="@style/Widget.Material3.TextInputLayout.FilledBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLength="200"
+                        android:textColor="@color/stitch_on_surface"
+                        android:fontFamily="sans-serif-medium" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Duration Slider -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/label_duration"
+                    android:fontFamily="sans-serif-bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/stitch_on_surface" />
+
+                <TextView
+                    android:id="@+id/tvDurationValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="60 min"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="20sp"
+                    android:textColor="@color/stitch_primary"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp" />
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/sliderDuration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:valueFrom="30"
+                    android:valueTo="240"
+                    android:stepSize="15"
+                    android:value="60"
+                    app:thumbColor="@color/stitch_primary"
+                    app:trackColorActive="@color/stitch_primary"
+                    app:trackColorInactive="@color/stitch_surface_container_highest"
+                    app:tickColorActive="@color/stitch_surface_container"
+                    app:tickColorInactive="@color/stitch_surface_container" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Message Bento -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_md"
+            android:layout_marginTop="16dp"
             android:hint="@string/hint_message"
             app:counterEnabled="true"
             app:counterMaxLength="500"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+            app:counterTextColor="@color/stitch_on_surface_variant"
+            app:boxBackgroundColor="@color/stitch_surface_container"
+            app:boxCornerRadiusTopStart="32dp"
+            app:boxCornerRadiusTopEnd="32dp"
+            app:boxCornerRadiusBottomStart="32dp"
+            app:boxCornerRadiusBottomEnd="32dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintTextColor="@color/stitch_primary"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etMessage"
@@ -120,26 +207,36 @@
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:maxLength="500"
-                android:minLines="3" />
-
+                android:minLines="4"
+                android:textColor="@color/stitch_on_surface"
+                android:fontFamily="sans-serif"
+                android:paddingTop="24dp"
+                android:paddingBottom="24dp"
+                android:paddingHorizontal="24dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Submit Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSendRequest"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/button_height"
-            android:layout_marginTop="@dimen/spacing_lg"
-            android:text="@string/btn_send_request" />
+            android:layout_height="64dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/btn_send_request"
+            android:textSize="18sp"
+            android:fontFamily="sans-serif-bold"
+            android:textColor="@color/stitch_on_surface"
+            app:backgroundTint="@color/stitch_primary"
+            app:cornerRadius="32dp"
+            style="@style/Widget.Material3.Button.UnelevatedButton" />
 
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/spacing_md"
+            android:layout_marginTop="24dp"
+            android:indeterminateTint="@color/stitch_primary"
             android:visibility="gone" />
 
     </LinearLayout>
-
 </ScrollView>

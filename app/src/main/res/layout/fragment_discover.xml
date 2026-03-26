@@ -3,21 +3,33 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/stitch_background">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:elevation="0dp">
 
         <!-- Search bar -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/spacing_md"
+            android:layout_margin="24dp"
             android:hint="@string/hint_search_skills"
             app:startIconDrawable="@android:drawable/ic_menu_search"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+            app:startIconTint="@color/stitch_on_surface_variant"
+            app:boxBackgroundColor="@color/stitch_surface_container"
+            app:boxCornerRadiusTopStart="24dp"
+            app:boxCornerRadiusTopEnd="24dp"
+            app:boxCornerRadiusBottomStart="24dp"
+            app:boxCornerRadiusBottomEnd="24dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintTextColor="@color/stitch_primary"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etSearch"
@@ -25,7 +37,9 @@
                 android:layout_height="wrap_content"
                 android:imeOptions="actionSearch"
                 android:inputType="text"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:textColor="@color/stitch_on_surface"
+                android:fontFamily="sans-serif-medium" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -33,9 +47,10 @@
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing_sm"
-            android:paddingHorizontal="@dimen/spacing_md"
-            android:scrollbars="none">
+            android:layout_marginBottom="16dp"
+            android:paddingHorizontal="24dp"
+            android:scrollbars="none"
+            android:clipToPadding="false">
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chipGroupCategories"
@@ -50,49 +65,63 @@
                     android:layout_height="wrap_content"
                     android:text="@string/chip_all"
                     android:checked="true"
-                    style="@style/Widget.Material3.Chip.Filter" />
+                    android:textColor="@color/stitch_on_surface"
+                    app:chipBackgroundColor="@color/stitch_surface_container_highest"
+                    app:chipStrokeWidth="0dp" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipMusic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/category_music"
-                    style="@style/Widget.Material3.Chip.Filter" />
+                    android:textColor="@color/stitch_on_surface"
+                    app:chipBackgroundColor="@color/stitch_surface_container"
+                    app:chipStrokeWidth="0dp" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipTech"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/category_tech"
-                    style="@style/Widget.Material3.Chip.Filter" />
+                    android:textColor="@color/stitch_on_surface"
+                    app:chipBackgroundColor="@color/stitch_surface_container"
+                    app:chipStrokeWidth="0dp" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipSports"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/category_sports"
-                    style="@style/Widget.Material3.Chip.Filter" />
+                    android:textColor="@color/stitch_on_surface"
+                    app:chipBackgroundColor="@color/stitch_surface_container"
+                    app:chipStrokeWidth="0dp" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipLanguages"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/category_languages"
-                    style="@style/Widget.Material3.Chip.Filter" />
+                    android:textColor="@color/stitch_on_surface"
+                    app:chipBackgroundColor="@color/stitch_surface_container"
+                    app:chipStrokeWidth="0dp" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipArts"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/category_arts"
-                    style="@style/Widget.Material3.Chip.Filter" />
+                    android:textColor="@color/stitch_on_surface"
+                    app:chipBackgroundColor="@color/stitch_surface_container"
+                    app:chipStrokeWidth="0dp" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipOther"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/category_other"
-                    style="@style/Widget.Material3.Chip.Filter" />
+                    android:textColor="@color/stitch_on_surface"
+                    app:chipBackgroundColor="@color/stitch_surface_container"
+                    app:chipStrokeWidth="0dp" />
 
             </com.google.android.material.chip.ChipGroup>
 
@@ -105,8 +134,8 @@
         android:id="@+id/rvSkills"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="@dimen/spacing_sm"
-        android:paddingBottom="@dimen/spacing_lg"
+        android:paddingTop="16dp"
+        android:paddingBottom="100dp"
         android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
@@ -124,8 +153,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/msg_no_skills_found"
-            android:textAppearance="?attr/textAppearanceTitleMedium"
-            android:textColor="?android:attr/textColorSecondary" />
+            android:fontFamily="sans-serif-medium"
+            android:textSize="16sp"
+            android:textColor="@color/stitch_on_surface_variant" />
 
     </LinearLayout>
 
@@ -135,6 +165,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:indeterminateTint="@color/stitch_primary"
         android:visibility="gone" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

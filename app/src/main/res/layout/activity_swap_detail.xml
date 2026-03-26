@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="@color/stitch_background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/spacing_lg">
+        android:padding="24dp">
 
         <!-- Status chip -->
         <com.google.android.material.chip.Chip
@@ -18,130 +19,158 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="PENDING"
-            style="@style/Widget.Material3.Chip.Assist" />
+            app:chipMinHeight="36dp"
+            app:textStartPadding="16dp"
+            app:textEndPadding="16dp"
+            android:textColor="@color/stitch_primary"
+            app:chipBackgroundColor="@color/stitch_surface_container_highest"
+            app:chipStrokeWidth="0dp" />
 
         <!-- Skill name -->
         <TextView
             android:id="@+id/tvSkillName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_md"
+            android:layout_marginTop="24dp"
             android:text="Skill Name"
-            android:textAppearance="?attr/textAppearanceHeadlineSmall"
+            android:fontFamily="sans-serif-black"
+            android:textSize="28sp"
+            android:textColor="@color/stitch_on_surface"
             android:gravity="center" />
 
-        <!-- Participants -->
+        <!-- Participants Bento Card -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_lg"
-            app:cardCornerRadius="@dimen/card_corner_radius"
-            app:cardElevation="@dimen/elevation_sm">
+            android:layout_marginTop="32dp"
+            app:cardBackgroundColor="@color/stitch_surface_container"
+            app:cardCornerRadius="32dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="@dimen/spacing_md">
+                android:padding="24dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_requester"
-                    android:textAppearance="?attr/textAppearanceLabelMedium"
-                    android:textColor="?android:attr/textColorSecondary" />
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="12sp"
+                    android:textColor="@color/stitch_on_surface_variant" />
 
                 <TextView
                     android:id="@+id/tvRequesterName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Requester"
-                    android:textAppearance="?attr/textAppearanceTitleMedium" />
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif-bold"
+                    android:textSize="18sp"
+                    android:textColor="@color/stitch_on_surface" />
 
+                <!-- Ghost Divider rather than strict line -->
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginVertical="@dimen/spacing_sm"
-                    android:background="?android:attr/listDivider" />
+                    android:layout_marginVertical="16dp"
+                    android:background="@color/stitch_surface_container_highest" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_teacher"
-                    android:textAppearance="?attr/textAppearanceLabelMedium"
-                    android:textColor="?android:attr/textColorSecondary" />
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="12sp"
+                    android:textColor="@color/stitch_on_surface_variant" />
 
                 <TextView
                     android:id="@+id/tvTeacherName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Teacher"
-                    android:textAppearance="?attr/textAppearanceTitleMedium" />
-
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif-bold"
+                    android:textSize="18sp"
+                    android:textColor="@color/stitch_on_surface" />
             </LinearLayout>
-
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Details card -->
+        <!-- Details Bento Card -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_md"
-            app:cardCornerRadius="@dimen/card_corner_radius"
-            app:cardElevation="@dimen/elevation_sm">
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/stitch_surface_container"
+            app:cardCornerRadius="32dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="@dimen/spacing_md">
+                android:padding="24dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_date_time"
-                    android:textAppearance="?attr/textAppearanceLabelMedium"
-                    android:textColor="?android:attr/textColorSecondary" />
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="12sp"
+                    android:textColor="@color/stitch_on_surface_variant" />
 
                 <TextView
                     android:id="@+id/tvDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="—"
-                    android:textAppearance="?attr/textAppearanceBodyLarge" />
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif-bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/stitch_on_surface" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_sm"
+                    android:layout_marginTop="16dp"
                     android:text="@string/label_duration"
-                    android:textAppearance="?attr/textAppearanceLabelMedium"
-                    android:textColor="?android:attr/textColorSecondary" />
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="12sp"
+                    android:textColor="@color/stitch_on_surface_variant" />
 
                 <TextView
                     android:id="@+id/tvDuration"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="60 min"
-                    android:textAppearance="?attr/textAppearanceBodyLarge" />
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif-bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/stitch_on_surface" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_sm"
+                    android:layout_marginTop="16dp"
                     android:text="@string/label_location"
-                    android:textAppearance="?attr/textAppearanceLabelMedium"
-                    android:textColor="?android:attr/textColorSecondary" />
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="12sp"
+                    android:textColor="@color/stitch_on_surface_variant" />
 
                 <TextView
                     android:id="@+id/tvLocation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Location"
-                    android:textAppearance="?attr/textAppearanceBodyLarge" />
-
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif-bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/stitch_on_surface" />
             </LinearLayout>
-
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Message -->
@@ -149,18 +178,25 @@
             android:id="@+id/tvMessageLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_lg"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="8dp"
             android:text="@string/label_message"
-            android:textAppearance="?attr/textAppearanceLabelLarge"
+            android:fontFamily="sans-serif-bold"
+            android:textSize="16sp"
+            android:textColor="@color/stitch_on_surface"
             android:visibility="gone" />
 
         <TextView
             android:id="@+id/tvMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_xs"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
             android:text=""
-            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="16sp"
+            android:lineSpacingExtra="4dp"
+            android:textColor="@color/stitch_on_surface_variant"
             android:visibility="gone" />
 
         <!-- Action buttons -->
@@ -168,42 +204,65 @@
             android:id="@+id/layoutActions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_xl"
+            android:layout_marginTop="48dp"
             android:gravity="center"
             android:orientation="vertical">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnAccept"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/button_height"
+                android:layout_height="64dp"
                 android:text="@string/btn_accept"
-                android:visibility="gone" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnReject"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/button_height"
-                android:layout_marginTop="@dimen/spacing_sm"
-                android:text="@string/btn_reject"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-bold"
+                android:textColor="@color/stitch_on_surface"
+                app:backgroundTint="@color/stitch_primary"
+                app:cornerRadius="32dp"
                 android:visibility="gone"
-                style="@style/Widget.Material3.Button.OutlinedButton" />
+                style="@style/Widget.Material3.Button.UnelevatedButton" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnComplete"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/button_height"
+                android:layout_height="64dp"
                 android:text="@string/btn_complete"
-                android:visibility="gone" />
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-bold"
+                android:textColor="@color/stitch_on_surface"
+                app:backgroundTint="@color/stitch_secondary"
+                app:cornerRadius="32dp"
+                android:visibility="gone"
+                style="@style/Widget.Material3.Button.UnelevatedButton" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnReject"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/btn_reject"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-bold"
+                android:textColor="@color/stitch_on_surface_variant"
+                app:backgroundTint="@android:color/transparent"
+                app:strokeColor="@color/stitch_surface_container_highest"
+                app:strokeWidth="1dp"
+                app:cornerRadius="32dp"
+                android:visibility="gone"
+                style="@style/Widget.Material3.Button.OutlinedButton" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnCancel"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/button_height"
-                android:layout_marginTop="@dimen/spacing_sm"
+                android:layout_height="64dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/btn_cancel_swap"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-bold"
+                android:textColor="#ff716c"
+                app:backgroundTint="@color/stitch_surface_container"
+                app:cornerRadius="32dp"
                 android:visibility="gone"
-                style="@style/Widget.Material3.Button.TonalButton" />
-
+                style="@style/Widget.Material3.Button.UnelevatedButton" />
         </LinearLayout>
 
         <ProgressBar
@@ -211,7 +270,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/spacing_md"
+            android:layout_marginTop="24dp"
+            android:indeterminateTint="@color/stitch_primary"
             android:visibility="gone" />
 
     </LinearLayout>

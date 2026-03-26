@@ -1,115 +1,76 @@
-# SwapSabha 🔄
+# SwapSabha
 
-**SwapSabha** is an open-source, community-driven Android application designed to facilitate peer-to-peer skill swapping. Instead of paying for classes, users can barter their expertise. Teach what you know, and learn what you want—for free!
+**SwapSabha** is a hyper-local, peer-to-peer bartering and community skill-sharing Android application custom-built for GenZ college and university students.
 
----
+Designed with a high-fidelity aesthetic, inspired by modern lifestyle apps, SwapSabha abandons traditional structural lines for a vibrant, borderless, and tonal layered experience featuring OLED-optimized dark modes and vibrant glassmorphism.
 
-## 🌟 Core Features
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![F-Droid Ready](https://img.shields.io/badge/F--Droid-Ready-success.svg)](https://f-droid.org/)
 
-*   **Firebase Authentication & Profiles:** Secure email/password login, customizable user profiles, and avatars.
-*   **Skill Discovery:** Browse an intuitive swipe-friendly interface to discover skills offered by people nearby or globally.
-*   **Real-time Skill Swaps:** Propose, accept, and manage 1-on-1 skill swap sessions with full status tracking (PENDING -> ACCEPTED -> COMPLETED).
-*   **Reputation & Badges System:** After an exchange, users rate each other. High ratings unlock unique badges and boost your standing on the global leaderboard.
-*   **Dynamic Dashboard:** Keep track of your learning goals, pending swaps, recent encounters, and community stats all on the main dashboard.
+## 🚀 Features
 
----
+### Core Skill-Sharing
+- **Discover Feed**: A lifestyle-driven discovery engine to browse skills available on your campus using visually distinct Bento cards.
+- **Bi-Directional Swaps**: Propose, negotiate, and execute skill exchanges seamlessly.
+- **Dynamic Leaderboard**: Gamified campus rankings based on verified swapper contributions and hours taught.
 
-## 🛠 Tech Stack
+### Reputation System
+- **Rating Flow**: Post-swap verification using organic bottom sheets to securely rate the interaction and award specialized Tags.
+- **Reputation Tiering**: Automatically evolving badges (Beginner → Intermediate → Expert → Master) attached to user profiles.
+- **Hours Tracking**: Verifiable tracking of time spent teaching/swapping skills.
 
-*   **Language:** Kotlin
-*   **Architecture:** MVVM (Model-View-ViewModel) + Repository Pattern
-*   **UI Toolkit:** XML Layouts / ViewBinding + Material Design 3
-*   **Backend & DB:** Firebase Authentication & Cloud Firestore (NoSQL)
-*   **Concurrency:** Kotlin Coroutines & Flow
-*   **Image Loading:** Glide (for user profile avatars)
+### Design System (Google Stitch Integration)
+- **Organic Layouts**: All core UI components (Dashboard, Swaps Manager, Profile, and Dialogs) are migrated to an editorial, intentionally asymmetrical design natively using Material 3 and custom XML drawables.
+- **Dynamic DayNight Mode**: Full palette adaptation emphasizing OLED blacks in dark mode and premium soft gradients in light mode.
 
----
+## 🛠️ Architecture & Tech Stack
 
-## 📋 Prerequisites
+SwapSabha is built natively for Android using robust architecture patterns.
 
-To build and run this project, you need:
-*   [Android Studio](https://developer.android.com/studio) (Koala or newer recommended)
-*   JDK 17 or higher
-*   Firebase Project 
+- **Language**: Kotlin
+- **Architecture**: MVVM (Model-View-ViewModel) enforcing a unidirectional data flow (UDF).
+- **UI Framework**: XML + Material 3 Components (Bento styling extensions).
+- **Dependency Injection**: Koin / Hilt (Refer to `core/di`).
+- **Data Persistence**: Room Database (Local Caching) + DataStore (Preferences).
+- **Network Interface**: Retrofit2 & OkHttp3.
+- **Asynchronous Processing**: Kotlin Coroutines & Flow.
 
----
+> **Note on Safety:** The entire presentation layer utilizes type-safe **ViewBindings**, ensuring high stability and zero NullPointerExceptions during view inflation—even after aggressive UI migrations.
 
-## 🚀 Getting Started
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/anandpr19/SwapSabha.git
-    cd SwapSabha
-    ```
-2.  **Add Firebase Configuration:**
-    *   Create a project on the [Firebase Console](https://console.firebase.google.com/).
-    *   Enable **Authentication** (Email/Password) and **Firestore Database**.
-    *   Download your `google-services.json` file and place it inside the `app/` directory.
-3.  **Build the App:**
-    *   Open the project in Android Studio.
-    *   Sync Gradle files.
-    *   Run the app on an Android Emulator or physical device (`Shift + F10`).
+## 🏗️ Getting Started (Development)
 
----
+### Prerequisites
+- Android Studio Iguana (or newer)
+- JDK 17
+- Minimum SDK: API 26 (Android 8.0)
+- Target SDK: API 34+
 
-## 🗄️ Firebase Setup & Rules
+### Build Instructions
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/anandpr19/SwapSabha.git
+   ```
+2. Open the project `SwapSabha_Proj` in Android Studio.
+3. Sync Gradle files.
+4. Run the debug variant on a connected emulator or physical device.
 
-You will need to deploy these custom security rules down to your Firestore Database so that Swaps, Profile reads, and Peer Ratings are fully operational:
+```bash
+# Terminal command for a quick debug build verification
+./gradlew assembleDebug
 
-```javascript
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    
-    // Users — read public, update allowed for peer reputation calculations
-    match /users/{userId} {
-      allow read: if request.auth != null;
-      allow create: if request.auth != null && request.auth.uid == userId;
-      allow update: if request.auth != null; 
-      allow delete: if false;
-    }
-    
-    // Skills — read public, modify only by owner
-    match /skills/{skillId} {
-      allow read: if request.auth != null;
-      allow create: if request.auth != null;
-      allow update, delete: if request.auth != null && resource.data.userId == request.auth.uid;
-    }
-    
-    // Learning Goals — modify only by owner
-    match /learningGoals/{goalId} {
-      allow read: if request.auth != null;
-      allow create: if request.auth != null;
-      allow update, delete: if request.auth != null && resource.data.userId == request.auth.uid;
-    }
-
-    // Swaps — restricted exclusively to the student and teacher
-    match /swaps/{swapId} {
-      allow read, update: if request.auth != null && (resource.data.requesterId == request.auth.uid || resource.data.teacherId == request.auth.uid);
-      allow create: if request.auth != null;
-    }
-
-    // Ratings — read public, create allowed
-    match /ratings/{ratingId} {
-      allow read: if request.auth != null;
-      allow create: if request.auth != null;
-      allow update, delete: if false;
-    }
-  }
-}
 ```
 
-*Note: You also need to create **Composite Indexes** via the Firebase Console for queries like Leaderboard arrays or reverse chronologically ordered active swaps. Look for the auto-generated links inside your Android Studio Logcat for easy one-click index setup.*
+## 🤝 Contributing
 
----
+We welcome community contributions, specially from university developer clubs! Please read the [CONTRIBUTING.md](CONTRIBUTING.md) file before issuing a Pull Request.
 
-## 🤝 Contributing / Design Modifications
-For those working to publish this on **F-Droid**:
-- Strip any unnecessary Google Analytics or proprietary non-open-source dependencies (Firebase is compatible with F-Droid as long as open-source plugins like FOSS drop-ins are configured correctly if strict adherence is needed, though standard Firebase usually requires the GMS services wrapper). 
-- Ensure your `colors.xml` and `themes.xml` provide solid Dark/Light mode contrasting before final release.
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## 📜 License
-This project is open-source. Be sure to configure the repository branch with the proper Open Source License (like GNU GPLv3 or MIT) before releasing via F-Droid.
+## 📄 License
 
----
-*Built with ❤️ for the community. Share your skills, not your money!*
+Distributed under the Apache 2.0 License. See `LICENSE` for more information.
