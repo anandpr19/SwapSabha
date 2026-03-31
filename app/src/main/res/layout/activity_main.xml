@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="?attr/colorSurface">
+    android:background="@color/stitch_background">
 
     <!-- Fragment Container -->
     <androidx.fragment.app.FragmentContainerView
@@ -16,12 +16,16 @@
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
 
-    <!-- Bottom Navigation -->
+    <!-- Bottom Navigation — Bento floating pill style -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="@dimen/bottom_nav_height"
+        android:paddingHorizontal="8dp"
         app:menu="@menu/bottom_nav_menu"
-        app:labelVisibilityMode="labeled" />
+        app:labelVisibilityMode="labeled"
+        android:background="@color/stitch_surface_container"
+        app:itemIconTint="@color/bottom_nav_selector"
+        app:itemTextColor="@color/bottom_nav_selector" />
 
 </LinearLayout>

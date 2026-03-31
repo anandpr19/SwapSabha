@@ -3,12 +3,39 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!-- Organic Bento Light Mode Palette (Derived from Stitch) -->
-    <color name="stitch_background">#F5F5F7</color>
+    <!-- =====================================================
+         SwapSabha — Organic Bento LIGHT Palette
+         GenZ / Lifestyle aesthetic (District / Swiggy vibes)
+         ====================================================== -->
+
+    <!-- Backgrounds -->
+    <color name="stitch_background">#F2F0F7</color>
     <color name="stitch_surface_container">#FFFFFF</color>
-    <color name="stitch_surface_container_highest">#EEEEEE</color>
-    <color name="stitch_primary">#0058CC</color>
-    <color name="stitch_secondary">#496400</color>
-    <color name="stitch_on_surface">#1A1A1A</color>
-    <color name="stitch_on_surface_variant">#555555</color>
+    <color name="stitch_surface_container_highest">#E8E5F0</color>
+
+    <!-- Brand Colors — Electric Violet primary, Lime accent -->
+    <color name="stitch_primary">#6C3FEF</color>          <!-- Vibrant Electric Violet -->
+    <color name="stitch_on_primary">#FFFFFF</color>
+    <color name="stitch_primary_container">#EDE7FF</color>
+    <color name="stitch_on_primary_container">#25006D</color>
+
+    <color name="stitch_secondary">#4CAF50</color>         <!-- Vibrant Green accent -->
+    <color name="stitch_on_secondary">#FFFFFF</color>
+    <color name="stitch_secondary_container">#D8F5D8</color>
+    <color name="stitch_on_secondary_container">#00210A</color>
+
+    <color name="stitch_tertiary">#F06292</color>          <!-- Pink pop for badges -->
+    <color name="stitch_on_tertiary">#FFFFFF</color>
+
+    <!-- Text colors -->
+    <color name="stitch_on_surface">#1C1B20</color>
+    <color name="stitch_on_surface_variant">#605D66</color>
+
+    <!-- Surface tones -->
+    <color name="stitch_surface">#FFFFFF</color>
+    <color name="stitch_on_background">#1C1B20</color>
+
+    <!-- Error -->
+    <color name="stitch_error">#B3261E</color>
+    <color name="stitch_on_error">#FFFFFF</color>
 </resources>

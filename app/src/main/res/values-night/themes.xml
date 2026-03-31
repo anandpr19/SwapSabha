@@ -1,7 +1,51 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+
+    <!-- Dark Mode — color attributes auto-swap via values-night/colors.xml.
+         Shapes and styles are inherited from values/themes.xml Base.Theme.SwapSabha.
+         Only color overrides are needed here. -->
+
     <style name="Base.Theme.SwapSabha" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+
+        <!-- Primary — Soft Lavender Glow (dark) -->
+        <item name="colorPrimary">@color/stitch_primary</item>
+        <item name="colorOnPrimary">@color/stitch_on_primary</item>
+        <item name="colorPrimaryContainer">@color/stitch_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/stitch_on_primary_container</item>
+
+        <!-- Secondary — Neon Lime (dark) -->
+        <item name="colorSecondary">@color/stitch_secondary</item>
+        <item name="colorOnSecondary">@color/stitch_on_secondary</item>
+        <item name="colorSecondaryContainer">@color/stitch_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/stitch_on_secondary_container</item>
+
+        <!-- Tertiary — Neon Pink (dark) -->
+        <item name="colorTertiary">@color/stitch_tertiary</item>
+        <item name="colorOnTertiary">@color/stitch_on_tertiary</item>
+
+        <!-- Backgrounds and surfaces (OLED) -->
+        <item name="android:colorBackground">@color/stitch_background</item>
+        <item name="colorSurface">@color/stitch_surface</item>
+        <item name="colorOnSurface">@color/stitch_on_surface</item>
+        <item name="colorOnSurfaceVariant">@color/stitch_on_surface_variant</item>
+        <item name="colorSurfaceContainer">@color/stitch_surface_container</item>
+        <item name="colorSurfaceContainerHigh">@color/stitch_surface_container</item>
+        <item name="colorSurfaceContainerHighest">@color/stitch_surface_container_highest</item>
+
+        <!-- Error -->
+        <item name="colorError">@color/stitch_error</item>
+        <item name="colorOnError">@color/stitch_on_error</item>
+
+        <!-- OLED Status/Nav bars -->
+        <item name="android:statusBarColor">@color/stitch_background</item>
+        <item name="android:navigationBarColor">@color/stitch_background</item>
+
+        <!-- Inherit shape + navigation styles from light theme definitions -->
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.SwapSabha.Medium</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.SwapSabha.Large</item>
+        <item name="bottomNavigationStyle">@style/Widget.SwapSabha.BottomNav</item>
+
     </style>
+
+    <style name="Theme.SwapSabha" parent="Base.Theme.SwapSabha" />
+
 </resources>

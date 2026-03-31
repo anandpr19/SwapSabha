@@ -1,64 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="@dimen/spacing_md"
-    android:layout_marginBottom="@dimen/spacing_sm"
-    android:gravity="center_vertical"
-    android:orientation="horizontal"
-    android:padding="@dimen/spacing_sm">
+    android:layout_marginHorizontal="24dp"
+    android:layout_marginBottom="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardBackgroundColor="@color/stitch_surface_container"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="0dp"
+    app:strokeWidth="0dp">
 
-    <!-- Rank -->
-    <TextView
-        android:id="@+id/tvRank"
-        android:layout_width="32dp"
-        android:layout_height="wrap_content"
-        android:text="#1"
-        android:textAppearance="?attr/textAppearanceTitleMedium"
-        android:textColor="?attr/colorPrimary"
-        android:gravity="center" />
-
-    <!-- Avatar -->
-    <ImageView
-        android:id="@+id/ivAvatar"
-        android:layout_width="@dimen/profile_picture_small"
-        android:layout_height="@dimen/profile_picture_small"
-        android:layout_marginStart="@dimen/spacing_sm"
-        android:contentDescription="@string/label_avatar" />
-
-    <!-- Name + Rating -->
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_marginStart="@dimen/spacing_md"
-        android:orientation="vertical">
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="16dp">
 
+        <!-- Rank Badge -->
         <TextView
-            android:id="@+id/tvName"
+            android:id="@+id/tvRank"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@color/stitch_surface_container_highest"
+            android:gravity="center"
+            android:text="#1"
+            android:fontFamily="sans-serif-black"
+            android:textSize="14sp"
+            android:textColor="@color/stitch_primary" />
+
+        <!-- Avatar -->
+        <ImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="12dp"
+            android:contentDescription="@string/label_avatar"
+            android:scaleType="centerCrop"
+            android:background="@color/stitch_surface_container_highest" />
+
+        <!-- Name + Rating -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User"
+                android:fontFamily="sans-serif-bold"
+                android:textSize="15sp"
+                android:textColor="@color/stitch_on_surface" />
+
+            <TextView
+                android:id="@+id/tvRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="★ 5.0"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="12sp"
+                android:textColor="@color/stitch_secondary" />
+        </LinearLayout>
+
+        <!-- Reputation chip -->
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipTier"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="User"
-            android:textAppearance="?attr/textAppearanceTitleSmall" />
-
-        <TextView
-            android:id="@+id/tvRating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="★ 5.0"
-            android:textAppearance="?attr/textAppearanceBodySmall"
-            android:textColor="?android:attr/textColorSecondary" />
+            android:text="Beginner"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/stitch_on_primary_container"
+            app:chipMinHeight="32dp"
+            app:chipBackgroundColor="@color/stitch_primary_container"
+            app:chipStrokeWidth="0dp" />
 
     </LinearLayout>
-
-    <!-- Reputation chip -->
-    <com.google.android.material.chip.Chip
-        android:id="@+id/chipTier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Beginner"
-        app:chipMinHeight="28dp"
-        style="@style/Widget.Material3.Chip.Assist" />
-
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>
