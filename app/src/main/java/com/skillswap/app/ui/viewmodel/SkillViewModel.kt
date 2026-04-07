@@ -82,6 +82,7 @@ class SkillViewModel(application: Application) : AndroidViewModel(application) {
                 userName = user?.name ?: prefsManager.getUserName() ?: "",
                 userProfilePic = user?.profilePictureUrl ?: "",
                 name = name.trim(),
+                nameLowercase = name.trim().lowercase(),
                 category = category.name,
                 level = level.name,
                 description = description.trim(),
@@ -122,6 +123,7 @@ class SkillViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch {
             val updates = mapOf(
                 "name" to name.trim(),
+                "nameLowercase" to name.trim().lowercase(),
                 "category" to category.name,
                 "level" to level.name,
                 "description" to description.trim(),

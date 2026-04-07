@@ -21,6 +21,8 @@ import com.skillswap.app.ui.skills.SkillAdapter
 import com.skillswap.app.ui.viewmodel.AuthViewModel
 import com.skillswap.app.ui.viewmodel.ProfileState
 import com.skillswap.app.ui.viewmodel.ProfileViewModel
+import com.skillswap.app.ui.viewmodel.RatingState
+import com.skillswap.app.ui.viewmodel.RatingViewModel
 import com.skillswap.app.ui.viewmodel.SkillViewModel
 import com.skillswap.app.utils.DateFormatter
 import com.skillswap.app.utils.hide
@@ -66,9 +68,9 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        profileViewModel = ViewModelProvider(this)[ProfileViewModel::class.java]
-        authViewModel = ViewModelProvider(this)[AuthViewModel::class.java]
-        skillViewModel = ViewModelProvider(this)[SkillViewModel::class.java]
+        profileViewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
+        authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
+        skillViewModel = ViewModelProvider(this).get(SkillViewModel::class.java)
 
         setupSkillsRecyclerView()
         setupListeners()
@@ -151,6 +153,14 @@ class ProfileFragment : Fragment() {
             } else {
                 binding.tvNoSkills.hide()
                 binding.rvMySkills.show()
+            }
+        }
+
+        // Shared Rating observer — refresh profile when a rating is submitted anywhere
+        val ratingSharedViewModel = ViewModelProvider(requireActivity()).get(RatingViewModel::class.java)
+        ratingSharedViewModel.ratingState.observe(viewLifecycleOwner) { state ->
+            if (state is RatingState.Submitted) {
+                profileViewModel.loadCurrentUserProfile()
             }
         }
     }

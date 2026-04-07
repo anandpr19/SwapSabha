@@ -20,12 +20,15 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/bottom_nav_height"
-        android:paddingHorizontal="8dp"
+        android:layout_height="64dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="16dp"
+        android:elevation="8dp"
         app:menu="@menu/bottom_nav_menu"
-        app:labelVisibilityMode="labeled"
-        android:background="@color/stitch_surface_container"
+        app:labelVisibilityMode="unlabeled"
+        android:background="@drawable/nav_pill_bg"
         app:itemIconTint="@color/bottom_nav_selector"
-        app:itemTextColor="@color/bottom_nav_selector" />
+        app:itemRippleColor="@android:color/transparent"
+        app:itemActiveIndicatorStyle="@style/Widget.SwapSabha.BottomNav.ActiveIndicator" />
 
 </LinearLayout>

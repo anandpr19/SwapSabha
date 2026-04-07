@@ -125,11 +125,11 @@ class SkillRepository {
      */
     suspend fun searchByName(query: String): Result<List<Skill>> {
         return try {
-            val normalised = query.trim()
+            val normalised = query.trim().lowercase()
             val end = normalised.dropLast(1) + (normalised.last() + 1)
             val snapshot = skillsCollection
-                .whereGreaterThanOrEqualTo("name", normalised)
-                .whereLessThan("name", end)
+                .whereGreaterThanOrEqualTo("nameLowercase", normalised)
+                .whereLessThan("nameLowercase", end)
                 .whereEqualTo("isAvailable", true)
                 .limit(Constants.PAGE_SIZE.toLong())
                 .get()

@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.skillswap.app.R
 import com.skillswap.app.databinding.FragmentDiscoverBinding
 import com.skillswap.app.ui.viewmodel.DiscoveryViewModel
 import com.skillswap.app.utils.SkillCategory
@@ -38,7 +39,7 @@ class DiscoverFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[DiscoveryViewModel::class.java]
+        viewModel = ViewModelProvider(this).get(DiscoveryViewModel::class.java)
 
         setupRecyclerView()
         setupSearch()
@@ -87,20 +88,25 @@ class DiscoverFragment : Fragment() {
     }
 
     private fun setupCategoryChips() {
-        val chipToCategory = mapOf(
-            binding.chipAll to null,
-            binding.chipMusic to SkillCategory.MUSIC,
-            binding.chipTech to SkillCategory.TECH,
-            binding.chipSports to SkillCategory.SPORTS,
-            binding.chipLanguages to SkillCategory.LANGUAGES,
-            binding.chipArts to SkillCategory.ARTS,
-            binding.chipOther to SkillCategory.OTHER
-        )
+        binding.chipGroupCategories.setOnCheckedStateChangeListener { group, checkedIds ->
+            val checkedId = checkedIds.firstOrNull()
+            
+            if (checkedId == null) {
+                // If no chip is selected, reset to "All"
+                viewModel.filterByCategory(null)
+                return@setOnCheckedStateChangeListener
+            }
 
-        binding.chipGroupCategories.setOnCheckedStateChangeListener { _, checkedIds ->
-            val checkedId = checkedIds.firstOrNull() ?: return@setOnCheckedStateChangeListener
-            val chip = binding.root.findViewById<com.google.android.material.chip.Chip>(checkedId)
-            val category = chipToCategory[chip]
+            val category = when (checkedId) {
+                R.id.chipMusic -> SkillCategory.MUSIC
+                R.id.chipTech -> SkillCategory.TECH
+                R.id.chipSports -> SkillCategory.SPORTS
+                R.id.chipLanguages -> SkillCategory.LANGUAGES
+                R.id.chipArts -> SkillCategory.ARTS
+                R.id.chipOther -> SkillCategory.OTHER
+                else -> null // chipAll
+            }
+            
             viewModel.filterByCategory(category)
         }
     }

@@ -16,6 +16,7 @@ data class Skill(
     val userName: String = "",
     val userProfilePic: String = "",
     val name: String = "",
+    val nameLowercase: String = "",
     val category: String = SkillCategory.OTHER.name,
     val level: String = SkillLevel.BEGINNER.name,
     val description: String = "",

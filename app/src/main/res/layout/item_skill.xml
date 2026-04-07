@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="24dp"
+    android:layout_marginHorizontal="16dp"
     android:layout_marginBottom="12dp"
     android:clickable="true"
     android:focusable="true"
@@ -13,111 +13,113 @@
     app:cardElevation="0dp"
     app:strokeWidth="0dp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:padding="20dp">
 
-        <!-- Header row: name + action buttons -->
-        <LinearLayout
-            android:layout_width="match_parent"
+        <!-- Skill Name -->
+        <TextView
+            android:id="@+id/tvSkillName"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_marginEnd="8dp"
+            android:text="Skill Name"
+            android:fontFamily="sans-serif-bold"
+            android:textSize="18sp"
+            android:textColor="@color/stitch_on_surface"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnEdit"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tvSkillName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Skill Name"
-                android:fontFamily="sans-serif-bold"
-                android:textSize="18sp"
-                android:textColor="@color/stitch_on_surface" />
+        <ImageButton
+            android:id="@+id/btnEdit"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/icon_button_bg"
+            android:contentDescription="Edit skill"
+            android:src="@android:drawable/ic_menu_edit"
+            app:tint="@color/stitch_on_surface_variant"
+            app:layout_constraintEnd_toStartOf="@+id/btnDelete"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/btnEdit"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@color/stitch_surface_container_highest"
-                android:contentDescription="Edit skill"
-                android:src="@android:drawable/ic_menu_edit"
-                android:tint="@color/stitch_on_surface_variant" />
-
-            <ImageButton
-                android:id="@+id/btnDelete"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@color/stitch_surface_container_highest"
-                android:contentDescription="Delete skill"
-                android:src="@android:drawable/ic_menu_delete"
-                android:tint="#FF716C"
-                android:layout_marginStart="8dp" />
-
-        </LinearLayout>
+        <ImageButton
+            android:id="@+id/btnDelete"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/icon_button_bg"
+            android:backgroundTint="#15FF716C"
+            android:contentDescription="Delete skill"
+            android:src="@android:drawable/ic_menu_delete"
+            app:tint="#FF716C"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Description -->
         <TextView
             android:id="@+id/tvDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="2"
+            android:layout_marginTop="12dp"
+            android:maxLines="3"
             android:ellipsize="end"
             android:text="Description"
             android:fontFamily="sans-serif"
             android:textSize="14sp"
-            android:lineSpacingExtra="3dp"
-            android:textColor="@color/stitch_on_surface_variant" />
+            android:lineSpacingExtra="4dp"
+            android:textColor="@color/stitch_on_surface_variant"
+            app:layout_constraintTop_toBottomOf="@id/tvSkillName" />
 
-        <!-- Chips row -->
-        <LinearLayout
+        <!-- Chips Row (Flow) -->
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/flowChips"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_marginTop="16dp"
+            app:flow_horizontalGap="8dp"
+            app:flow_verticalGap="8dp"
+            app:flow_wrapMode="aligned"
+            app:flow_horizontalStyle="packed"
+            app:flow_horizontalBias="0"
+            app:constraint_referenced_ids="tvCategory,tvLevel,chipAvailable"
+            app:layout_constraintTop_toBottomOf="@id/tvDescription" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/tvCategory"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Category"
-                android:fontFamily="sans-serif-medium"
-                android:textSize="12sp"
-                android:textColor="@color/stitch_on_primary_container"
-                app:chipMinHeight="30dp"
-                app:chipBackgroundColor="@color/stitch_primary_container"
-                app:chipStrokeWidth="0dp" />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/tvCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="12sp"
+            android:textColor="@color/stitch_on_primary_container"
+            app:chipBackgroundColor="@color/stitch_primary_container"
+            app:chipMinHeight="32dp"
+            app:chipStrokeWidth="0dp" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/tvLevel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Level"
-                android:fontFamily="sans-serif-medium"
-                android:textSize="12sp"
-                android:textColor="@color/stitch_on_secondary_container"
-                app:chipMinHeight="30dp"
-                app:chipBackgroundColor="@color/stitch_secondary_container"
-                app:chipStrokeWidth="0dp" />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/tvLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Level"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="12sp"
+            android:textColor="@color/stitch_on_secondary_container"
+            app:chipBackgroundColor="@color/stitch_secondary_container"
+            app:chipMinHeight="32dp"
+            app:chipStrokeWidth="0dp" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipAvailable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Available"
-                android:fontFamily="sans-serif-medium"
-                android:textSize="12sp"
-                android:textColor="@color/stitch_on_surface_variant"
-                app:chipMinHeight="30dp"
-                app:chipBackgroundColor="@color/stitch_surface_container_highest"
-                app:chipStrokeWidth="0dp" />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipAvailable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Available"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="12sp"
+            android:textColor="@color/stitch_on_surface_variant"
+            app:chipBackgroundColor="@color/stitch_surface_container_highest"
+            app:chipMinHeight="32dp"
+            app:chipStrokeWidth="0dp" />
 
-        </LinearLayout>
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

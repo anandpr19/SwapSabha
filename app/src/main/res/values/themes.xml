@@ -65,7 +65,7 @@
     </style>
 
     <style name="Widget.SwapSabha.BottomNav.ActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
-        <item name="android:color">@color/stitch_primary_container</item>
+        <item name="android:color">@color/stitch_surface_container</item>
         <item name="shapeAppearance">@style/ShapeAppearance.SwapSabha.Large</item>
     </style>
 

@@ -12,11 +12,15 @@ import com.skillswap.app.R
 import com.skillswap.app.databinding.FragmentHomeBinding
 import com.skillswap.app.ui.swaps.SwapAdapter
 import com.skillswap.app.ui.viewmodel.HomeViewModel
+import com.skillswap.app.ui.viewmodel.RatingState
+import com.skillswap.app.ui.viewmodel.RatingViewModel
 import com.skillswap.app.utils.BadgeType
 import com.skillswap.app.utils.ReputationTier
 import com.skillswap.app.utils.hide
 import com.skillswap.app.utils.show
+import com.skillswap.app.utils.showToast
 import java.util.Calendar
+import java.util.Locale
 
 /**
  * Home dashboard showing stats, badges, recent swaps, and leaderboard.
@@ -80,7 +84,7 @@ class HomeFragment : Fragment() {
             binding.tvSwapCount.text = user.stats.completedSwaps.toString()
 
             val avgRating = user.stats.avgRating
-            binding.tvAvgRating.text = if (avgRating > 0) "%.1f".format(avgRating) else "—"
+            binding.tvAvgRating.text = if (avgRating > 0) String.format("%.1f", avgRating) else "—"
 
             val tier = ReputationTier.fromScore(user.reputationScore)
             binding.tvRepTier.text = tier.displayName
@@ -126,6 +130,19 @@ class HomeFragment : Fragment() {
                 leaderboardAdapter.submitList(users)
             }
         }
+
+        // Shared Rating observer — refresh dashboard when a rating is submitted anywhere
+        val ratingViewModel = ViewModelProvider(requireActivity()).get(RatingViewModel::class.java)
+        ratingViewModel.ratingState.observe(viewLifecycleOwner) { state ->
+            if (state is RatingState.Submitted) {
+                viewModel.loadDashboard()
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.loadDashboard()
     }
 
     override fun onDestroyView() {
