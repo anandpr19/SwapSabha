@@ -19,7 +19,7 @@ Designed with a high-fidelity aesthetic, inspired by modern lifestyle apps, Swap
 - **Reputation Tiering**: Automatically evolving badges (Beginner → Intermediate → Expert → Master) attached to user profiles.
 - **Hours Tracking**: Verifiable tracking of time spent teaching/swapping skills.
 
-### Design System (Google Stitch Integration)
+### Design System
 - **Organic Layouts**: All core UI components (Dashboard, Swaps Manager, Profile, and Dialogs) are migrated to an editorial, intentionally asymmetrical design natively using Material 3 and custom XML drawables.
 - **Dynamic DayNight Mode**: Full palette adaptation emphasizing OLED blacks in dark mode and premium soft gradients in light mode.
 
