@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Background Circle (matches the overall shape) -->
+    <path
+        android:fillColor="#1C1B20"
+        android:pathData="M54,54m-40,0a40,40 0,1 1,80 0a40,40 0,1 1,-80 0" />
+
+    <!-- Teal Arrow (Interlocking) -->
+    <path
+        android:fillColor="#4DB6AC"
+        android:pathData="M65,40 C75,40 82,50 82,60 C82,75 70,85 55,85 L55,75 C65,75 72,68 72,60 C72,52 68,48 62,48 L62,55 L45,44 L62,33 Z" />
+
+    <!-- Purple Arrow (Interlocking) -->
+    <path
+        android:fillColor="#9575CD"
+        android:pathData="M43,68 C33,68 26,58 26,48 C26,33 38,23 53,23 L53,33 C43,33 36,40 36,48 C36,56 40,60 46,60 L46,53 L63,64 L46,75 Z" />
+
+</vector>
